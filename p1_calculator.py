@@ -1,20 +1,42 @@
-def calculator():
-    no_1 = int(input("enter your first number"))
-    operation = int(input("enter  arithmetic operation  like +,-,*,/"))
-    no_2 = int(input("enter your  second number"))
+"""Модуль calculator.py.
 
-    if operation =='+':
-        print(f"the sum of {no_1} + {no_2} are {no_1 + no_2}")
-    elif  operation =='-':
-        print(f"the diff of {no_1}  - {no_2} are {no_1 - no_2}")
-    elif operation =='*':
-        print(f"the product of {no_1} * {no_2} are {no_1 * no_2}")
-    elif  operation =='/':
+Простой консольный калькулятор, реализующий базовые арифметические операции: сложение,
+вычитание, умножение и деление. Запрашивает ввод от пользователя и выводит результат
+вычислений. Обрабатывает деление на ноль и некорректный ввод операции.
+
+Функции:     calculator(): запускает интерактивный калькулятор в консоли.
+"""
+
+
+def calculator() -> None:
+    """Запускает интерактивный калькулятор в консоли."""
+    try:
+        no_1 = int(input("Enter your first number: "))
+        operation = input("Enter arithmetic operation (+, -, *, /): ").strip()
+        no_2 = int(input("Enter your second number: "))
+    except ValueError:
+        print("Invalid input. Please enter valid integers.")
+        return
+
+    result: float  # Аннотация — mypy теперь знает, что result может быть float
+    if operation == "+":
+        result = no_1 + no_2
+        print(f"The sum of {no_1} + {no_2} is {result}")
+    elif operation == "-":
+        result = no_1 - no_2
+        print(f"The difference of {no_1} - {no_2} is {result}")
+    elif operation == "*":
+        result = no_1 * no_2
+        print(f"The product of {no_1} * {no_2} is {result}")
+    elif operation == "/":
         if no_2 == 0:
-            print("it gives infinity as it is not divided by zero")
+            print("Cannot divide by zero!")
         else:
-            print(f"the sum of {no_1}  / {no_2} are {no_1 / no_2}")
+            result = no_1 / no_2
+            print(f"The division of {no_1} / {no_2} is {result}")
     else:
-        print("invalid output")
+        print("Invalid operation. Please use +, -, *, or /.")
 
-calculator()
+
+if __name__ == "__main__":
+    calculator()
