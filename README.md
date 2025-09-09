@@ -17,9 +17,12 @@
 git clone https://github.com/ruslanenatorov/calculator2.git
 cd calculator2
 
+# установите зависимости
+
 pip install -r requirements.txt
 pre-commit install
 
+#структура
 calculator2/
 ├── p1_calculator.py           # Основной файл калькулятора
 ├── .gitignore                 # Игнорируемые файлы
